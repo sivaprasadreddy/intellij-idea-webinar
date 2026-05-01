@@ -1,0 +1,86 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bookstore-svc
+spec:
+  type: NodePort
+  selector:
+    app: bookstore-pod
+  ports:
+    - name: app-port-mapping
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bookstore-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bookstore-pod
+  template:
+    metadata:
+      labels:
+        app: bookstore-pod
+    spec:
+      containers:
+        - name: spring-debugger-demo
+          image: sivaprasadreddy/spring-debugger-demo
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+            - name: jdwp
+              containerPort: 5005
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: k8s
+            - name: BPL_DEBUG_ENABLED
+              value: "true"
+            - name: BPL_DEBUG_PORT
+              value: "5005"
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: bookstore-configmap
+                  key: postgres_host
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: bookstore-configmap
+                  key: postgres_port
+            - name: DB_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: bookstore-configmap
+                  key: postgres_database
+            - name: DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: bookstore-secrets
+                  key: postgres_username
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: bookstore-secrets
+                  key: postgres_password
+            - name: REDIS_HOST
+              valueFrom:
+                 configMapKeyRef:
+                   name: bookstore-configmap
+                   key: redis_host
+            - name: REDIS_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: bookstore-configmap
+                  key: redis_port
+          volumeMounts:
+            - name: config-volume
+              mountPath: /workspace/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: bookstore-configmap

@@ -1,0 +1,49 @@
+package dev.sivalabs.bookstore.notification;
+
+import dev.sivalabs.bookstore.ApplicationProperties;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.mail.MailException;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+@ConditionalOnProperty(name = "app.email-service-type", havingValue = "javamail", matchIfMissing = true)
+class JavaMailService implements EmailService {
+    private static final Logger log = LoggerFactory.getLogger(JavaMailService.class);
+    private final JavaMailSender javaMailSender;
+    private final ApplicationProperties properties;
+
+    JavaMailService(JavaMailSender javaMailSender, ApplicationProperties properties) {
+        this.javaMailSender = javaMailSender;
+        this.properties = properties;
+    }
+
+    public void send(String to, String subject, String content) {
+        this.send(List.of(to), subject, content);
+    }
+
+    public void send(List<String> to, String subject, String content) {
+        String supportEmail = properties.supportEmail();
+        try {
+            MimeMessage message = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(message, false, "UTF-8");
+
+            helper.setTo(to.toArray(new String[0]));
+            helper.setReplyTo(supportEmail);
+            helper.setFrom(supportEmail);
+            helper.setSubject(subject);
+            helper.setText(content, true);
+
+            javaMailSender.send(message);
+        } catch (MailException | MessagingException e) {
+            log.error(e.getMessage(), e);
+        }
+    }
+}

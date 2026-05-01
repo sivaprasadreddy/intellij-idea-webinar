@@ -1,0 +1,30 @@
+### Get Products
+GET http://localhost:8080/api/products
+
+### Get Product by code
+GET http://localhost:8080/api/products/P100
+
+### Create Order
+POST http://localhost:8080/api/orders
+Content-Type: application/json
+
+{
+  "customer": {
+    "name": "Siva",
+    "email": "siva123@gmail.com",
+    "phone": "9876523456"
+  },
+  "deliveryAddress": "James, Bangalore, India",
+  "items": [{
+    "code": "P100",
+    "name": "The Hunger Games",
+    "price": 34.0,
+    "quantity": 2
+  }]
+}
+
+### Get All Orders
+GET http://localhost:8080/api/orders
+
+### Get Order by OrderNumber
+GET http://localhost:8080/api/orders/{{orderNumber}}
