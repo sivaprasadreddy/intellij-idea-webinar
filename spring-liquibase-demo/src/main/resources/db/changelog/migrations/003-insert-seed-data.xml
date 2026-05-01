@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.20.xsd">
+
+    <changeSet id="003-insert-seed-data" author="siva">
+        <!-- Seed users -->
+        <insert tableName="users">
+            <column name="id" valueNumeric="1"/>
+            <column name="email" value="admin@gmail.com"/>
+            <column name="password" value="$2a$10$hKDVYxLefVHV/vtuPhWD3OigtRyOykRLDdUAp80Z1crSoS1lFqaFS"/>
+            <column name="name" value="Administrator"/>
+            <column name="role" value="ROLE_ADMIN"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+        <insert tableName="users">
+            <column name="id" valueNumeric="2"/>
+            <column name="email" value="siva@gmail.com"/>
+            <column name="password" value="$2a$10$SrjkF2GHbq/Rmdub36jVteSHGajuJMEWyrDVAJyLXAsLYllmAh32u"/>
+            <column name="name" value="Siva"/>
+            <column name="role" value="ROLE_USER"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+
+        <!-- Seed notes for admin user (id=1) -->
+        <insert tableName="notes">
+            <column name="id" valueNumeric="1"/>
+            <column name="title" value="Welcome to QuickNotes"/>
+            <column name="content" value="This is your first note! QuickNotes helps you capture ideas quickly and keep them organized."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '30 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="2"/>
+            <column name="title" value="Project Planning"/>
+            <column name="content" value="Key milestones for Q1: Launch new feature, Complete user testing, Deploy to production. Review weekly progress."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '28 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="3"/>
+            <column name="title" value="Meeting Notes - Team Sync"/>
+            <column name="content" value="Discussed sprint goals, assigned tasks to team members. Next meeting scheduled for Friday 2pm."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '25 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="4"/>
+            <column name="title" value="Book Recommendations"/>
+            <column name="content" value="Must read: The Pragmatic Programmer, Clean Code, Design Patterns. Add to reading list."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '20 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="5"/>
+            <column name="title" value="System Architecture Ideas"/>
+            <column name="content" value="Consider microservices architecture for scalability. Evaluate container orchestration with Kubernetes."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '18 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="6"/>
+            <column name="title" value="Bug Tracking"/>
+            <column name="content" value="Critical: Fix login timeout issue. High: Improve search performance. Medium: Update UI styling."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '15 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="7"/>
+            <column name="title" value="Conference Takeaways"/>
+            <column name="content" value="Learned about new Java features, modern web frameworks, and cloud-native development patterns."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '12 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="8"/>
+            <column name="title" value="Code Review Checklist"/>
+            <column name="content" value="Check for: security vulnerabilities, proper error handling, test coverage, code documentation, performance optimization."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '10 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="9"/>
+            <column name="title" value="Database Optimization"/>
+            <column name="content" value="Add indexes on frequently queried columns. Review slow query logs. Consider read replicas for scaling."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '7 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="10"/>
+            <column name="title" value="API Design Guidelines"/>
+            <column name="content" value="Use RESTful conventions, proper HTTP status codes, versioning strategy. Document all endpoints thoroughly."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '5 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="11"/>
+            <column name="title" value="Security Audit Notes"/>
+            <column name="content" value="Implement CSRF protection, update dependencies, enable HTTPS, review authentication flow."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '3 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="12"/>
+            <column name="title" value="Quarterly Goals"/>
+            <column name="content" value="Improve system performance by 30%, reduce technical debt, enhance user experience, mentor junior developers."/>
+            <column name="user_id" valueNumeric="1"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '1 day'"/>
+        </insert>
+
+        <!-- Seed notes for demo user (id=2) -->
+        <insert tableName="notes">
+            <column name="id" valueNumeric="13"/>
+            <column name="title" value="Shopping List"/>
+            <column name="content" value="Groceries: milk, eggs, bread, fruits, vegetables, coffee, pasta, olive oil."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '35 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="14"/>
+            <column name="title" value="Workout Routine"/>
+            <column name="content" value="Monday: Cardio 30min. Tuesday: Upper body. Wednesday: Rest. Thursday: Lower body. Friday: Full body."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '33 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="15"/>
+            <column name="title" value="Travel Plans"/>
+            <column name="content" value="Summer vacation ideas: Beach resort in Bali, Mountain hiking in Switzerland, City tour in Tokyo."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '31 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="16"/>
+            <column name="title" value="Recipe - Pasta Carbonara"/>
+            <column name="content" value="Ingredients: spaghetti, eggs, parmesan, bacon, black pepper. Cook pasta, mix with egg mixture, add bacon."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '29 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="17"/>
+            <column name="title" value="Birthday Gift Ideas"/>
+            <column name="content" value="For mom: spa voucher, jewelry, perfume. For dad: watch, books, golf accessories."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '27 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="18"/>
+            <column name="title" value="Learning Goals 2025"/>
+            <column name="content" value="Master Spring Boot, learn React framework, improve database skills, study cloud computing."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '24 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="19"/>
+            <column name="title" value="Home Improvement Tasks"/>
+            <column name="content" value="Paint living room, fix kitchen sink, organize garage, install new light fixtures."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '22 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="20"/>
+            <column name="title" value="Movie Watchlist"/>
+            <column name="content" value="Must watch: Inception, The Shawshank Redemption, Interstellar, The Dark Knight, Pulp Fiction."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '21 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="21"/>
+            <column name="title" value="Budget Planning"/>
+            <column name="content" value="Monthly expenses: rent, utilities, groceries, transportation, entertainment, savings. Track spending daily."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '19 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="22"/>
+            <column name="title" value="Gardening Notes"/>
+            <column name="content" value="Plant tomatoes in spring, water daily, add fertilizer monthly. Prune roses in early summer."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '17 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="23"/>
+            <column name="title" value="Car Maintenance"/>
+            <column name="content" value="Oil change due next month, check tire pressure, replace air filter, schedule annual inspection."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '16 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="24"/>
+            <column name="title" value="Meditation Practice"/>
+            <column name="content" value="Start with 5 minutes daily. Focus on breathing. Try guided meditation apps. Practice gratitude."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '14 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="25"/>
+            <column name="title" value="Photography Tips"/>
+            <column name="content" value="Rule of thirds, golden hour lighting, experiment with angles, practice manual focus, edit in Lightroom."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '13 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="26"/>
+            <column name="title" value="Language Learning"/>
+            <column name="content" value="Spanish: 30 min daily on Duolingo, watch Spanish movies, practice with native speakers, learn 10 new words daily."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '11 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="27"/>
+            <column name="title" value="Podcast Recommendations"/>
+            <column name="content" value="The Daily, How I Built This, Radiolab, TED Radio Hour, Freakonomics."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '9 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="28"/>
+            <column name="title" value="Side Project Ideas"/>
+            <column name="content" value="Build a personal blog, create a mobile app, start a YouTube channel, develop a SaaS product."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '8 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="29"/>
+            <column name="title" value="Networking Events"/>
+            <column name="content" value="Tech meetup next Tuesday, Developer conference in March, Startup pitch event on Friday."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '6 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="30"/>
+            <column name="title" value="Health Checkup Reminders"/>
+            <column name="content" value="Annual physical exam, dental cleaning, eye examination, blood work. Schedule appointments soon."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '4 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="31"/>
+            <column name="title" value="Book Club Discussion"/>
+            <column name="content" value="Current book: Atomic Habits. Key takeaways: habit stacking, identity-based habits, 1% improvements."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '3 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="32"/>
+            <column name="title" value="Weekend Plans"/>
+            <column name="content" value="Saturday: morning run, brunch with friends, visit museum. Sunday: relax, read, meal prep for week."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '2 days'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="33"/>
+            <column name="title" value="Career Development"/>
+            <column name="content" value="Attend workshops, get certification, build portfolio, network with professionals, update resume."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '1 day'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="34"/>
+            <column name="title" value="Music Playlist"/>
+            <column name="content" value="Create workout playlist, study focus music, relaxing evening tunes, road trip songs."/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP - INTERVAL '12 hours'"/>
+        </insert>
+        <insert tableName="notes">
+            <column name="id" valueNumeric="35"/>
+            <column name="title" value="Random Thoughts"/>
+            <column name="content" value="Ideas come at unexpected moments. Keep this app handy to capture them instantly!"/>
+            <column name="user_id" valueNumeric="2"/>
+            <column name="created_at" valueComputed="CURRENT_TIMESTAMP"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

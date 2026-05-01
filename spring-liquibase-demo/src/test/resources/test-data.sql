@@ -1,0 +1,41 @@
+DELETE FROM NOTES;
+
+-- Sample notes for admin user (12 notes: 10 active, 2 archived)
+insert into notes(id, title, content, user_id, archived, created_at) values
+(1, 'Welcome to QuickNotes', 'This is your first note! QuickNotes helps you capture ideas quickly and keep them organized.', 1, false, CURRENT_TIMESTAMP - INTERVAL '30 days'),
+(2, 'Project Planning', 'Key milestones for Q1: Launch new feature, Complete user testing, Deploy to production. Review weekly progress.', 1, false, CURRENT_TIMESTAMP - INTERVAL '28 days'),
+(3, 'Meeting Notes - Team Sync', 'Discussed sprint goals, assigned tasks to team members. Next meeting scheduled for Friday 2pm.', 1, false, CURRENT_TIMESTAMP - INTERVAL '25 days'),
+(4, 'Book Recommendations', 'Must read: The Pragmatic Programmer, Clean Code, Design Patterns. Add to reading list.', 1, false, CURRENT_TIMESTAMP - INTERVAL '20 days'),
+(5, 'System Architecture Ideas', 'Consider microservices architecture for scalability. Evaluate container orchestration with Kubernetes.', 1, false, CURRENT_TIMESTAMP - INTERVAL '18 days'),
+(6, 'Bug Tracking', 'Critical: Fix login timeout issue. High: Improve search performance. Medium: Update UI styling.', 1, false, CURRENT_TIMESTAMP - INTERVAL '15 days'),
+(7, 'Conference Takeaways', 'Learned about new Java features, modern web frameworks, and cloud-native development patterns.', 1, false, CURRENT_TIMESTAMP - INTERVAL '12 days'),
+(8, 'Code Review Checklist', 'Check for: security vulnerabilities, proper error handling, test coverage, code documentation, performance optimization.', 1, false, CURRENT_TIMESTAMP - INTERVAL '10 days'),
+(9, 'Database Optimization', 'Add indexes on frequently queried columns. Review slow query logs. Consider read replicas for scaling.', 1, false, CURRENT_TIMESTAMP - INTERVAL '7 days'),
+(10, 'API Design Guidelines', 'Use RESTful conventions, proper HTTP status codes, versioning strategy. Document all endpoints thoroughly.', 1, false, CURRENT_TIMESTAMP - INTERVAL '5 days'),
+(11, 'Security Audit Notes', 'Implement CSRF protection, update dependencies, enable HTTPS, review authentication flow.', 1, true, CURRENT_TIMESTAMP - INTERVAL '3 days'),
+(12, 'Quarterly Goals', 'Improve system performance by 30%, reduce technical debt, enhance user experience, mentor junior developers.', 1, true, CURRENT_TIMESTAMP - INTERVAL '1 day'),
+
+-- Sample notes for demo user (23 notes: 21 active, 2 archived)
+(13, 'Shopping List', 'Groceries: milk, eggs, bread, fruits, vegetables, coffee, pasta, olive oil.', 2, false, CURRENT_TIMESTAMP - INTERVAL '35 days'),
+(14, 'Workout Routine', 'Monday: Cardio 30min. Tuesday: Upper body. Wednesday: Rest. Thursday: Lower body. Friday: Full body.', 2, false, CURRENT_TIMESTAMP - INTERVAL '33 days'),
+(15, 'Travel Plans', 'Summer vacation ideas: Beach resort in Bali, Mountain hiking in Switzerland, City tour in Tokyo.', 2, false, CURRENT_TIMESTAMP - INTERVAL '31 days'),
+(16, 'Recipe - Pasta Carbonara', 'Ingredients: spaghetti, eggs, parmesan, bacon, black pepper. Cook pasta, mix with egg mixture, add bacon.', 2, false, CURRENT_TIMESTAMP - INTERVAL '29 days'),
+(17, 'Birthday Gift Ideas', 'For mom: spa voucher, jewelry, perfume. For dad: watch, books, golf accessories.', 2, false, CURRENT_TIMESTAMP - INTERVAL '27 days'),
+(18, 'Learning Goals 2025', 'Master Spring Boot, learn React framework, improve database skills, study cloud computing.', 2, false, CURRENT_TIMESTAMP - INTERVAL '24 days'),
+(19, 'Home Improvement Tasks', 'Paint living room, fix kitchen sink, organize garage, install new light fixtures.', 2, false, CURRENT_TIMESTAMP - INTERVAL '22 days'),
+(20, 'Movie Watchlist', 'Must watch: Inception, The Shawshank Redemption, Interstellar, The Dark Knight, Pulp Fiction.', 2, false, CURRENT_TIMESTAMP - INTERVAL '21 days'),
+(21, 'Budget Planning', 'Monthly expenses: rent, utilities, groceries, transportation, entertainment, savings. Track spending daily.', 2, false, CURRENT_TIMESTAMP - INTERVAL '19 days'),
+(22, 'Gardening Notes', 'Plant tomatoes in spring, water daily, add fertilizer monthly. Prune roses in early summer.', 2, false, CURRENT_TIMESTAMP - INTERVAL '17 days'),
+(23, 'Car Maintenance', 'Oil change due next month, check tire pressure, replace air filter, schedule annual inspection.', 2, false, CURRENT_TIMESTAMP - INTERVAL '16 days'),
+(24, 'Meditation Practice', 'Start with 5 minutes daily. Focus on breathing. Try guided meditation apps. Practice gratitude.', 2, false, CURRENT_TIMESTAMP - INTERVAL '14 days'),
+(25, 'Photography Tips', 'Rule of thirds, golden hour lighting, experiment with angles, practice manual focus, edit in Lightroom.', 2, false, CURRENT_TIMESTAMP - INTERVAL '13 days'),
+(26, 'Language Learning', 'Spanish: 30 min daily on Duolingo, watch Spanish movies, practice with native speakers, learn 10 new words daily.', 2, false, CURRENT_TIMESTAMP - INTERVAL '11 days'),
+(27, 'Podcast Recommendations', 'The Daily, How I Built This, Radiolab, TED Radio Hour, Freakonomics.', 2, false, CURRENT_TIMESTAMP - INTERVAL '9 days'),
+(28, 'Side Project Ideas', 'Build a personal blog, create a mobile app, start a YouTube channel, develop a SaaS product.', 2, false, CURRENT_TIMESTAMP - INTERVAL '8 days'),
+(29, 'Networking Events', 'Tech meetup next Tuesday, Developer conference in March, Startup pitch event on Friday.', 2, false, CURRENT_TIMESTAMP - INTERVAL '6 days'),
+(30, 'Health Checkup Reminders', 'Annual physical exam, dental cleaning, eye examination, blood work. Schedule appointments soon.', 2, false, CURRENT_TIMESTAMP - INTERVAL '4 days'),
+(31, 'Book Club Discussion', 'Current book: Atomic Habits. Key takeaways: habit stacking, identity-based habits, 1% improvements.', 2, true, CURRENT_TIMESTAMP - INTERVAL '3 days'),
+(32, 'Weekend Plans', 'Saturday: morning run, brunch with friends, visit museum. Sunday: relax, read, meal prep for week.', 2, true, CURRENT_TIMESTAMP - INTERVAL '2 days'),
+(33, 'Career Development', 'Attend workshops, get certification, build portfolio, network with professionals, update resume.', 2, false, CURRENT_TIMESTAMP - INTERVAL '1 day'),
+(34, 'Music Playlist', 'Create workout playlist, study focus music, relaxing evening tunes, road trip songs.', 2, false, CURRENT_TIMESTAMP - INTERVAL '12 hours'),
+(35, 'Random Thoughts', 'Ideas come at unexpected moments. Keep this app handy to capture them instantly!', 2, false, CURRENT_TIMESTAMP);
