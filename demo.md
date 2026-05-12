@@ -8,9 +8,9 @@
   - Field Injection inspection and quickfix
   - Automatic bean injection
   - Logger injection
-  - spring boot config properties autocompletion
   - cron human understandable explanation
   - @Async return type inspection
+  - spring boot config properties autocompletion
 
 - **Spring Data Reverse Engineering** (8 mins)
   - Generate JPA/JDBC entities from DB
