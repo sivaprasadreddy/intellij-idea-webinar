@@ -16,5 +16,5 @@ metadata:
   name: bookstore-secrets
 type: Opaque
 data:
-  postgres_username: c2l2YQ== # siva
-  postgres_password: c2l2YWxhYnM= # sivalabs
+  postgres_username: cG9zdGdyZXM= # postgres
+  postgres_password: cG9zdGdyZXM= # postgres
