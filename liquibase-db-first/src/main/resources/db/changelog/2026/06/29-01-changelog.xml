@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-5.0.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1782705168841-1" author="siva">
+        <createTable tableName="books">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_books"/>
+            </column>
+            <column name="isbn" type="text(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="title" type="text(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author" type="text(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="now()" name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="now()" name="updated_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1782705168841-2" author="siva">
+        <createTable tableName="reviews">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_reviews"/>
+            </column>
+            <column name="book_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rating" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="review" type="text(1000)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="now()" name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="now()" name="updated_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1782705168841-3" author="siva">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="email" type="text(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="text(200)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="text(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="text(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="now()" name="created_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueComputed="now()" name="updated_at" type="DATETIME">
+                <constraints nullable="false"/>
+            </column>
+            <column name="version" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1782705168841-4" author="siva">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="books"
+                                 constraintName="FK_BOOKS_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1782705168841-5" author="siva">
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="reviews" constraintName="FK_REVIEWS_ON_BOOK"
+                                 referencedColumnNames="id" referencedTableName="books"/>
+    </changeSet>
+    <changeSet id="1782705168841-6" author="siva">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="reviews" constraintName="FK_REVIEWS_ON_USER"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+
+</databaseChangeLog>

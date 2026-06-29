@@ -11,9 +11,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>dev.sivalabs</groupId>
-    <artifactId>spring-data-jpa-model-first</artifactId>
+    <artifactId>liquibase-db-first</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-data-jpa-model-first</name>
+    <name>liquibase-db-first</name>
 
     <properties>
         <java.version>25</java.version>
@@ -34,11 +34,7 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-flyway</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.flywaydb</groupId>
-            <artifactId>flyway-database-postgresql</artifactId>
+            <artifactId>spring-boot-starter-liquibase</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
